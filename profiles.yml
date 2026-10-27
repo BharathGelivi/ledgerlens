@@ -1,0 +1,11 @@
+ledgerlens:
+  target: local
+  outputs:
+    local:
+      type: duckdb
+      path: "{{ env_var('LEDGERLENS_DB') }}"
+      threads: 1
+      settings:
+        threads: 1
+        memory_limit: 512MB
+        max_temp_directory_size: 1GB

@@ -1,0 +1,6 @@
+data/
+target/
+logs/
+__pycache__/
+.env
+.user.yml

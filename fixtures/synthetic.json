@@ -1,0 +1,140 @@
+{
+  "source": "synthetic-only; NOT real PayPal records",
+  "transaction_details": [
+    {
+      "transaction_info": {
+        "transaction_id": "SYNTHETIC-001",
+        "transaction_event_code": "T0006",
+        "transaction_status": "S",
+        "transaction_amount": {
+          "currency_code": "USD",
+          "value": "10.10"
+        },
+        "transaction_initiation_date": "2026-10-26T10:00:00Z",
+        "transaction_updated_date": "2026-10-26T12:00:00Z"
+      }
+    },
+    {
+      "transaction_info": {
+        "transaction_id": "SYNTHETIC-001",
+        "transaction_event_code": "T0006",
+        "transaction_status": "S",
+        "transaction_amount": {
+          "currency_code": "USD",
+          "value": "10.10"
+        },
+        "transaction_initiation_date": "2026-10-26T10:00:00Z",
+        "transaction_updated_date": "2026-10-26T12:00:00Z"
+      }
+    },
+    {
+      "transaction_info": {
+        "transaction_id": "SYNTHETIC-002",
+        "transaction_event_code": "T0006",
+        "transaction_status": "P",
+        "transaction_amount": {
+          "currency_code": "USD",
+          "value": "20.20"
+        },
+        "transaction_initiation_date": "2026-10-26T10:00:00Z",
+        "transaction_updated_date": "2026-10-26T12:00:00Z"
+      }
+    },
+    {
+      "transaction_info": {
+        "transaction_id": "SYNTHETIC-002",
+        "transaction_event_code": "T0006",
+        "transaction_status": "S",
+        "transaction_amount": {
+          "currency_code": "USD",
+          "value": "20.20"
+        },
+        "transaction_initiation_date": "2026-10-26T10:00:00Z",
+        "transaction_updated_date": "2026-10-27T12:00:00Z"
+      }
+    },
+    {
+      "transaction_info": {
+        "transaction_id": "SYNTHETIC-003",
+        "transaction_event_code": "T0006",
+        "transaction_status": "S",
+        "transaction_amount": {
+          "currency_code": "INR",
+          "value": "500.00"
+        },
+        "transaction_initiation_date": "2026-10-26T10:00:00Z",
+        "transaction_updated_date": "2026-10-26T12:00:00Z"
+      }
+    },
+    {
+      "transaction_info": {
+        "transaction_id": "SYNTHETIC-004",
+        "transaction_event_code": "T1107",
+        "transaction_status": "S",
+        "transaction_amount": {
+          "currency_code": "USD",
+          "value": "-2.00"
+        },
+        "transaction_initiation_date": "2026-10-26T10:00:00Z",
+        "transaction_updated_date": "2026-10-26T12:00:00Z"
+      }
+    },
+    {
+      "transaction_info": {
+        "transaction_id": "SYNTHETIC-005",
+        "transaction_event_code": "T0006",
+        "transaction_status": "D",
+        "transaction_amount": {
+          "currency_code": "USD",
+          "value": "5.00"
+        },
+        "transaction_initiation_date": "2026-10-26T10:00:00Z",
+        "transaction_updated_date": "2026-10-26T12:00:00Z"
+      }
+    },
+    {
+      "transaction_info": {
+        "transaction_id": "SYNTHETIC-006",
+        "transaction_event_code": "T0006",
+        "transaction_status": "P",
+        "transaction_amount": {
+          "currency_code": "USD",
+          "value": "7.00"
+        },
+        "transaction_initiation_date": "2026-10-26T10:00:00Z",
+        "transaction_updated_date": "2026-10-26T12:00:00Z"
+      }
+    },
+    {
+      "transaction_info": {
+        "transaction_id": "SYNTHETIC-007",
+        "transaction_event_code": "T0006",
+        "transaction_status": "V",
+        "transaction_amount": {
+          "currency_code": "USD",
+          "value": "1.00"
+        },
+        "transaction_initiation_date": "2026-10-26T10:00:00Z",
+        "transaction_updated_date": "2026-10-26T12:00:00Z"
+      }
+    },
+    {
+      "transaction_info": {
+        "transaction_id": "SYNTHETIC-001",
+        "transaction_event_code": "T0106",
+        "transaction_status": "S",
+        "transaction_amount": {
+          "currency_code": "USD",
+          "value": "-0.30"
+        },
+        "transaction_initiation_date": "2026-10-26T10:00:00Z",
+        "transaction_updated_date": "2026-10-26T12:00:00Z"
+      }
+    },
+    {
+      "transaction_info": {
+        "transaction_id": "BROKEN-001"
+      }
+    }
+  ]
+}

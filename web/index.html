@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light"><title>LedgerLens · Payment intelligence</title>
+  <link rel="stylesheet" href="/assets/style.css"><script defer src="/assets/app.js"></script>
+</head>
+<body>
+<aside class="sidebar">
+  <a class="brand" href="/" aria-label="LedgerLens home"><span class="brand-icon">L<span>╱</span></span>LedgerLens</a>
+  <p class="workspace-label">PAYMENT INTELLIGENCE</p>
+  <nav aria-label="Workspace navigation">
+    <button class="nav active" data-view="overview" aria-current="page"><span>01</span> Overview</button>
+    <button class="nav" data-view="transactions"><span>02</span> Transactions</button>
+    <button class="nav" data-view="pipeline"><span>03</span> Pipeline & quality</button>
+    <button class="nav" data-view="learn"><span>04</span> How it works</button>
+  </nav>
+  <div class="sidebar-note"><span class="live-dot"></span> Local workspace<p>Every number has a source.<br>Every refresh leaves a trail.</p></div>
+  <p class="sidebar-bottom">Built with DuckDB + dbt<br>PayPal sandbox integration</p>
+</aside>
+<main>
+  <header class="topbar"><span id="breadcrumb">Workspace / Overview</span><div><span id="dataset" class="badge">Checking source…</span><button id="reload" class="icon-button" aria-label="Refresh workspace">↻</button></div></header>
+  <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+  <section id="overview" class="view">
+    <div class="page-heading"><div><p class="eyebrow">FROM RAW RECORDS TO RELIABLE ANSWERS</p><h1>Know what your<br>payment data is saying.</h1><p class="lede">A clear view of payment activity, data quality, and the evidence behind it.</p></div><a class="button secondary" href="/export">Export Parquet <span aria-hidden="true">↗</span></a></div>
+    <div class="metrics" id="metrics" aria-label="Dataset counts"></div>
+    <div class="overview-grid">
+      <section class="panel chart-panel"><div class="section-title"><div><p class="eyebrow">ACTIVITY OVER TIME</p><h2>Completed payment activity</h2></div><label class="compact-label">Currency<select id="chart-currency" aria-label="Chart currency"></select></label></div><p class="muted small">Signed completed amounts by initiation date in UTC. Each currency is shown separately.</p><div id="chart" class="chart" aria-live="polite"></div><div class="chart-foot"><span id="chart-range"></span><span>Source: published dbt model</span></div></section>
+      <section class="panel"><p class="eyebrow">CURRENT STATE</p><h2>Where records stand</h2><div id="status-list" class="status-list"></div><div class="callout">Completed activity is not revenue, profit, or an account balance.</div></section>
+    </div>
+    <section class="panel investigator"><div><p class="eyebrow">EVIDENCE FIRST</p><h2>Ask a better question.</h2><p class="muted">Investigate your dataset with an explanation grounded in SQL results.</p><span id="ai-state" class="badge">Checking AI connection…</span></div><div class="question-side"><div class="suggestions"><button class="suggestion">What needs investigation?</button><button class="suggestion">Explain pending and reversed records.</button></div><form id="ask-form"><label class="sr-only" for="question">Investigation question</label><input id="question" maxlength="500" minlength="3" placeholder="What should I check before trusting these figures?" required><button class="button" id="ask-button" type="submit">Investigate ↗</button></form><p class="small muted">Cloud AI runs only when requested and configured. Source figures remain visible.</p></div><div id="answer" class="answer" hidden><p id="answer-mode" class="eyebrow"></p><p id="answer-text"></p><details><summary>Inspect the SQL evidence</summary><pre id="answer-evidence"></pre></details></div></section>
+  </section>
+  <section id="transactions" class="view" hidden>
+    <div class="page-heading"><div><p class="eyebrow">FOLLOW THE RECORD</p><h1>Nothing behind<br>the numbers is hidden.</h1><p class="lede">Filter current records, then trace a transaction through its preserved source versions.</p></div></div>
+    <form id="filter-form" class="filters"><label>Transaction ID<input id="search" placeholder="Search transaction ID" maxlength="100"></label><label>Status<select id="status"><option value="">All statuses</option><option value="S">Completed</option><option value="P">Pending</option><option value="D">Denied</option><option value="V">Reversed</option></select></label><label>Currency<select id="currency"><option value="">All currencies</option></select></label><button class="button" type="submit">Apply filters</button></form>
+    <div class="panel table-panel"><div class="section-title"><h2>Current records</h2><span class="muted small" id="record-count"></span></div><div class="table-scroll"><table><thead><tr><th>Transaction / event</th><th>Status</th><th class="number">Signed amount</th><th>Updated · UTC</th><th><span class="sr-only">Trace</span></th></tr></thead><tbody id="transaction-rows"></tbody></table></div><div class="pagination"><button id="previous" class="button secondary">Previous</button><span id="page-label"></span><button id="next" class="button secondary">Next</button></div></div>
+    <section class="panel" id="trace-panel" hidden tabindex="-1"><div class="section-title"><div><p class="eyebrow">RECORD LINEAGE</p><h2 id="trace-title"></h2></div><button id="close-trace" class="icon-button" aria-label="Close trace">×</button></div><p id="trace-meaning" class="muted"></p><ol id="version-list" class="timeline"></ol><details><summary>Inspect normalized source versions</summary><pre id="trace-json"></pre></details></section>
+  </section>
+  <section id="pipeline" class="view" hidden>
+    <div class="page-heading"><div><p class="eyebrow">BUILD. TEST. THEN PUBLISH.</p><h1>A pipeline you<br>can inspect.</h1><p class="lede">A failed refresh leaves the previous passing dataset available.</p></div><button id="replay" class="button">Replay latest input ↻</button></div>
+    <div class="flow" aria-label="Data pipeline"><div><b>01 / Extract</b><span>PayPal or synthetic JSON</span></div><span class="flow-arrow">→</span><div><b>02 / Validate</b><span>History + quarantine</span></div><span class="flow-arrow">→</span><div><b>03 / Transform</b><span>dbt models + tests</span></div><span class="flow-arrow">→</span><div><b>04 / Publish</b><span>Versioned warehouse</span></div></div>
+    <div class="overview-grid"><section class="panel"><p class="eyebrow">DATA CONTRACTS</p><h2>Checks before publication</h2><div id="test-list" class="test-list"></div></section><section class="panel"><p class="eyebrow">REQUIRES ATTENTION</p><h2>Quarantine & ambiguity</h2><p class="muted">Invalid rows stay inspectable. Conflicting latest values are excluded from totals.</p><div id="issue-list" class="issue-list"></div></section></div>
+    <section class="panel table-panel"><div class="section-title"><h2>Run history</h2><span class="muted small">Most recent 30 attempts</span></div><div class="table-scroll"><table><thead><tr><th>Run / source</th><th>Result</th><th class="number">Input rows</th><th class="number">New payloads</th><th class="number">Replay / duplicate</th><th class="number">Duration</th></tr></thead><tbody id="run-rows"></tbody></table></div></section>
+  </section>
+  <section id="learn" class="view" hidden>
+    <div class="page-heading"><div><p class="eyebrow">LEARN THE WHOLE SYSTEM</p><h1>From an API response<br>to an answer you can verify.</h1><p class="lede">The tools matter because each one solves a specific part of the problem.</p></div></div>
+    <div class="lessons">
+      <article><span>01</span><div><h2>Extract without rewriting history</h2><p>Python reads sandbox reporting pages. JSON keeps the original structure. Each distinct payload gets a SHA-256 fingerprint; repeated observations are tracked separately, so replay never creates another payment.</p><code>raw_records + record_sightings</code></div></article>
+      <article><span>02</span><div><h2>Make bad data visible</h2><p>Validate timestamps, event codes, statuses, and exact decimal amounts. Preserve rejected rows with a reason. Normalize dates to UTC and keep currencies separate. A later status update becomes another historical version.</p><code>valid_records + quarantine</code></div></article>
+      <article><span>03</span><div><h2>Resolve state with inspectable SQL</h2><p>DuckDB runs window functions over historical versions. dbt orders the dependent models. Conflicting latest values go into the ambiguity model instead of being chosen arbitrarily.</p><code>conflicts → payments → daily_activity</code></div></article>
+      <article><span>04</span><div><h2>Test before anyone sees the result</h2><p>Each run builds a separate warehouse. Tests check unique keys, excluded ambiguity, and agreement between details and summaries. Only a passing build replaces the published pointer. Readers can keep using the previous version during a refresh.</p><code>candidate → dbt build → atomic publication</code></div></article>
+      <article><span>05</span><div><h2>Serve evidence, then explain it</h2><p>FastAPI exposes bounded, parameterized queries. Parquet provides a typed columnar export. An optional cloud model receives aggregate evidence and a question. It cannot run SQL, alter records, or move money.</p><code>SQL evidence → optional AI explanation → human review</code></div></article>
+    </div>
+    <section class="exercise"><p class="eyebrow">TRY IT YOURSELF</p><h2>What happens when the same input arrives twice?</h2><p>Open Pipeline & quality and replay the latest input. Compare input rows, new payloads, and current-record counts. Then open a transaction trace to see its observation count increase while its amount stays unchanged.</p><button class="button" data-go="pipeline">Run the experiment ↗</button></section>
+  </section>
+  <footer>LedgerLens / Source-preserving payment analytics <span id="published-at"></span></footer>
+</main>
+</body></html>
