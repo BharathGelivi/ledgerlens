@@ -10,6 +10,7 @@
 - Real PayPal sandbox OAuth and Transaction Search succeeded. Reporting returned zero transactions, and the isolated sandbox pipeline passed with zero rows. No populated sandbox payment demonstration is claimed.
 - Real NVIDIA inference succeeded with nvidia/nemotron-3.5-lightning-30b-a3b. The owner's key is encrypted locally. The old initial model was unavailable, so an actually accessible current model was selected. Responses are checked for completion; evidence is visible for human review.
 - Devpost solo registration succeeded after explicit agreement approval. Creating the separate project draft stalled at Devpost's verification service. No final entry is submitted.
+- The dedicated public source repository is https://github.com/BharathGelivi/ledgerlens. Its clean Linux GitHub Actions installation, tests, and demo build passed. A fresh Windows clone with its own Python environment also passed all sixteen tests and the isolated demo build; uv needed copy mode because OneDrive rejected hardlinks.
 
 ## Measured results
 

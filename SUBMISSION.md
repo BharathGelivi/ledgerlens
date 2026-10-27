@@ -44,8 +44,8 @@ Codex assisted research, implementation, tests, documentation, and submission pr
 - [x] Build/test the interactive investigation workspace.
 - [ ] Generate nonzero sandbox activity and verify its reporting through the pipeline after any reporting delay.
 - [ ] Create the separate Devpost project draft; its verification service stalled during the attempt.
-- [ ] Publish only this project's source, synthetic fixture, instructions, and license in a dedicated public repository.
-- [ ] Verify instructions from a fresh clone and provide safe judge access.
+- [x] Publish only this project's source, synthetic fixture, instructions, and license: https://github.com/BharathGelivi/ledgerlens.
+- [x] Verify fresh Windows clone/environment and clean Linux CI installation, tests, and demo build. Public instructions provide local judge access with synthetic data; cloud integrations require their own credentials.
 - [ ] Record a working demo under three minutes and upload publicly to YouTube.
 - [ ] Add the actual repository/video URLs, review the finished entry, and submit.
 

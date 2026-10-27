@@ -6,17 +6,19 @@ The owner is registered solo for the PayPal AI Hackathon. No final entry is subm
 
 ## Start the application
 
-From PowerShell in C:\Users\geliv\OneDrive\Desktop\data_engineering:
+From PowerShell in this repository folder, first create an environment and install the pinned dependencies:
 
 ```powershell
-.\.venv\Scripts\python.exe hackathons\ledgerlens\generate_demo.py
-.\.venv\Scripts\python.exe hackathons\ledgerlens\pipeline.py --input hackathons\ledgerlens\fixtures\demo.json --dataset demo
-.\.venv\Scripts\python.exe hackathons\ledgerlens\serve.py --dataset demo
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe generate_demo.py
+.\.venv\Scripts\python.exe pipeline.py --input fixtures\demo.json --dataset demo
+.\.venv\Scripts\python.exe serve.py --dataset demo
 ```
 
 Open http://127.0.0.1:8011/. Stop with Ctrl+C. The four sections are Overview, Transactions, Pipeline & quality, and How it works. The last section includes an end-to-end lesson and replay exercise.
 
-For a standalone clone, use Python 3.10+, create a virtual environment, install requirements.txt, then run generate_demo.py, pipeline.py --input fixtures/demo.json --dataset demo, and serve.py --dataset demo. A fresh-environment installation still needs verification; the pinned packages are the versions tested in this existing lab.
+For a standalone clone, use Python 3.10+, create a virtual environment, install requirements.txt, then run generate_demo.py, pipeline.py --input fixtures/demo.json --dataset demo, and serve.py --dataset demo. A fresh Windows clone/environment and clean Linux CI installation have both passed the tests and demo build.
 
 ## Understand the full data journey
 
@@ -40,7 +42,7 @@ Search for DEMO-029000000038 in Transactions. Its trace shows pending -> complet
 ## Configure NVIDIA privately
 
 ```powershell
-.\.venv\Scripts\python.exe hackathons\ledgerlens\configure_ai.py
+.\.venv\Scripts\python.exe configure_ai.py
 ```
 
 Paste the key into the masked prompt. It is encrypted for your Windows user in the ignored data folder. Setup makes no API call. Refresh the app after configuration. NVIDIA_API_KEY and optional NVIDIA_MODEL environment variables also work. The existing OpenAI path is available through OPENAI_API_KEY and OPENAI_MODEL.
@@ -52,9 +54,9 @@ Each requested investigation makes one cloud call with a 1,200-output-token ceil
 The owner's approved Transaction Search permission and encrypted local credentials are configured. No plaintext credential file remains. To collect, build, and view an isolated sandbox dataset:
 
 ```powershell
-.\.venv\Scripts\python.exe hackathons\ledgerlens\collect_sandbox.py --start 2026-10-26T00:00:00Z --end 2026-10-27T09:00:00Z
-.\.venv\Scripts\python.exe hackathons\ledgerlens\pipeline.py --input hackathons\ledgerlens\data\sandbox.json --dataset sandbox
-.\.venv\Scripts\python.exe hackathons\ledgerlens\serve.py --dataset sandbox --port 8012
+.\.venv\Scripts\python.exe collect_sandbox.py --start 2026-10-26T00:00:00Z --end 2026-10-27T09:00:00Z
+.\.venv\Scripts\python.exe pipeline.py --input data\sandbox.json --dataset sandbox
+.\.venv\Scripts\python.exe serve.py --dataset sandbox --port 8012
 ```
 
 Choose dates containing your test activity. PayPal documents reporting delays of up to three hours and a maximum 31-day window. A successful zero-row extract is not a populated payment demonstration. The collector accepts at most 10,000 records/10 MB; use shorter windows above those bounds. Another contributor must configure their own environment variables; Windows-encrypted keys intentionally cannot be used from another account or machine.
@@ -74,9 +76,9 @@ Official source: https://developer.paypal.com/api/transaction-search/v1/search-g
 ## Verify
 
 ```powershell
-.\.venv\Scripts\python.exe -m unittest discover -s hackathons\ledgerlens -p test_*.py -v
-.\.venv\Scripts\python.exe hackathons\ledgerlens\verify_workspace.py
-.\.venv\Scripts\python.exe hackathons\ledgerlens\benchmark.py
+.\.venv\Scripts\python.exe -m unittest discover -s . -p test_*.py -v
+.\.venv\Scripts\python.exe verify_workspace.py
+.\.venv\Scripts\python.exe benchmark.py
 ```
 
 The HTTP checker expects the deterministic demo on port 8011. It verifies filters, injection resistance, lineage, conflict exclusion, origin checks, reads during refresh, and atomic/idempotent replay. It does not make a paid AI request. See VALIDATION.md.
@@ -90,4 +92,5 @@ Run versions/inputs are retained and consume disk. Do not delete the active run.
 DuckDB uses one worker, a 512 MB buffer setting, and a 1 GB spill bound; these do not cap whole-process RAM. No local model weights or GPU training are needed. Add Airflow, Kafka, or ClickHouse when scheduling, real streams, or concurrent workload measurements justify them; more tool names alone do not improve reliability.
 
 No public deployment, production authentication, final Devpost entry, or demo video is included yet. See SUBMISSION.md for the current draft and outstanding delivery steps.
+
 
