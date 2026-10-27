@@ -9,7 +9,7 @@
 - Browser checks cover populated overview, transaction explorer, trace timeline, pipeline checks/history, and source labelling.
 - Real PayPal sandbox OAuth and Transaction Search succeeded. Reporting returned zero transactions, and the isolated sandbox pipeline passed with zero rows. No populated sandbox payment demonstration is claimed.
 - Real NVIDIA inference succeeded with nvidia/nemotron-3.5-lightning-30b-a3b. The owner's key is encrypted locally. The old initial model was unavailable, so an actually accessible current model was selected. Responses are checked for completion; evidence is visible for human review.
-- Devpost solo registration succeeded after explicit agreement approval. Creating the separate project draft stalled at Devpost's verification service. No final entry is submitted.
+- Devpost solo registration succeeded after explicit agreement approval. The separate project entry was subsequently completed and submitted on October 27, 2026; Devpost displayed Project submitted. Entry: https://devpost.com/software/ledgerlens-o5hndg. Public 2:32 video: https://youtu.be/GL0EV9CTQqo (YouTube checks complete, no issues found).
 - The dedicated public source repository is https://github.com/BharathGelivi/ledgerlens. Its clean Linux GitHub Actions installation, tests, and demo build passed. A fresh Windows clone with its own Python environment also passed all sixteen tests and the isolated demo build; uv needed copy mode because OneDrive rejected hardlinks.
 
 ## Measured results
@@ -24,6 +24,6 @@ DuckDB uses one worker, a 512 MB buffer setting, and a 1 GB temporary spill boun
 
 Windows restricted execution initially blocked localhost sockets and one temporary file replacement. Actual HTTP verification and the full test suite passed outside those restrictions. No production workaround was added for the testing restriction.
 
-Still needed: nonzero sandbox activity through reporting; a public source repository and fresh-clone verification; a recorded/public demo video; project-entry creation and final submission. Public deployment and production accounting/authentication are outside the current implementation.
+Remaining validation gap: nonzero sandbox activity through reporting. Public source, fresh-clone verification, public narrated walkthrough and final entry submission are complete. Public deployment and production accounting/authentication are outside the current implementation.
 
 Generated datasets, encrypted credentials, local source snapshots, dbt user identifiers, logs, and warehouse files must stay out of the public archive.

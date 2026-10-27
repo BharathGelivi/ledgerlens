@@ -2,7 +2,7 @@
 
 Payment-data investigations with source history, tested SQL, and evidence-grounded AI.
 
-The owner is registered solo for the PayPal AI Hackathon. No final entry is submitted. PayPal sandbox authentication/reporting and NVIDIA inference are verified. The sandbox currently returns zero transactions; the populated demonstration is explicitly synthetic.
+LedgerLens was submitted solo to the PayPal AI Hackathon on October 27, 2026: https://devpost.com/software/ledgerlens-o5hndg. Public walkthrough: https://youtu.be/GL0EV9CTQqo. Read [the complete learning guide](PROJECT_GUIDE.md) for every tool, data flow, example, exercise and operating limit. PayPal sandbox authentication/reporting and NVIDIA inference are verified. The sandbox currently returns zero transactions; the populated demonstration is explicitly synthetic.
 
 ## Start the application
 
@@ -91,6 +91,6 @@ Run versions/inputs are retained and consume disk. Do not delete the active run.
 
 DuckDB uses one worker, a 512 MB buffer setting, and a 1 GB spill bound; these do not cap whole-process RAM. No local model weights or GPU training are needed. Add Airflow, Kafka, or ClickHouse when scheduling, real streams, or concurrent workload measurements justify them; more tool names alone do not improve reliability.
 
-No public deployment, production authentication, final Devpost entry, or demo video is included yet. See SUBMISSION.md for the current draft and outstanding delivery steps.
+The submitted entry and public video are linked above. Judges can run the documented test build locally. Public hosting and production authentication are outside this implementation. See SUBMISSION.md for delivery status.
 
 

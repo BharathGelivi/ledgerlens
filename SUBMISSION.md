@@ -1,4 +1,4 @@
-# LedgerLens - entry draft, NOT SUBMITTED
+# LedgerLens - SUBMITTED October 27, 2026
 
 Target: PayPal AI Hackathon, https://paypalaihackathon.devpost.com/. The owner is registered as a solo participant. Deadline in the signed-in account: November 13, 2026 at 1:30 AM IST.
 
@@ -22,7 +22,7 @@ Python extracts PayPal sandbox reporting data and validates records. DuckDB stor
 
 ## Truthful current status
 
-The populated demo is explicitly synthetic and reproducible. Sixteen Python tests, three SQL checks, and HTTP behaviors have passed. Actual sandbox OAuth/reporting works but returned zero transactions; a populated sandbox trace is still required. NVIDIA inference has succeeded with the owner's configured account. Registration is complete; no final project entry or video has been submitted.
+The populated demo is explicitly synthetic and reproducible. Sixteen Python tests, three SQL checks, and HTTP behaviors have passed. Actual sandbox OAuth/reporting works but returned zero transactions; a populated sandbox trace remains a follow-up validation gap. NVIDIA inference has succeeded with the owner's configured account. The entry is submitted at https://devpost.com/software/ledgerlens-o5hndg. The public 2:32 walkthrough is https://youtu.be/GL0EV9CTQqo. Devpost displayed Project submitted and SUBMITTED TO PayPal AI Hackathon.
 
 ## Lessons
 
@@ -43,13 +43,15 @@ Codex assisted research, implementation, tests, documentation, and submission pr
 - [x] Configure the owner's NVIDIA key and verify inference with an accessible model.
 - [x] Build/test the interactive investigation workspace.
 - [ ] Generate nonzero sandbox activity and verify its reporting through the pipeline after any reporting delay.
-- [ ] Create the separate Devpost project draft; its verification service stalled during the attempt.
-- [x] Publish only this project's source, synthetic fixture, instructions, and license: https://github.com/BharathGelivi/ledgerlens.
+- [x] Create and complete the separate Devpost project entry, with screenshots and cover.
+- [x] Publish only this project's source, deterministic fixture generator, instructions, and license: https://github.com/BharathGelivi/ledgerlens.
 - [x] Verify fresh Windows clone/environment and clean Linux CI installation, tests, and demo build. Public instructions provide local judge access with synthetic data; cloud integrations require their own credentials.
-- [ ] Record a working demo under three minutes and upload publicly to YouTube.
-- [ ] Add the actual repository/video URLs, review the finished entry, and submit.
+- [x] Publish a 2:32 narrated walkthrough of actual app screenshots, with synthetic-data disclosure: https://youtu.be/GL0EV9CTQqo.
+- [x] Save repository/video URLs and confirmed personal answers, accept the authorized rules/terms and submit.
+- [x] Write PROJECT_GUIDE.md explaining every tool and the full data journey.
+- [x] Stop the local server; ports 8011 and 8012 have no listeners. Earlier build, test and video jobs finished.
 
-## Suggested 2:40 demo
+## Original demo outline (final video is 2:32)
 
 0:00-0:20: show the payment-data problem. 0:20-0:50: show an explicitly labelled source and, once available, the nonzero sandbox extract. 0:50-1:20: trace a status change and inspect ambiguity. 1:20-1:50: replay input and show stable totals, zero new payloads, passing checks, and retained publication. 1:50-2:20: ask NVIDIA a question and compare the answer to SQL evidence. 2:20-2:40: show the tool chain, measured optimization with its limited scope, and the learning exercise.
 
